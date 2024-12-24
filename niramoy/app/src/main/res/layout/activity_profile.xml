@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nurse.ProfileActivity">
+
+    <!-- Linear Layout for Header Section -->
+    <LinearLayout
+        android:id="@+id/headerSection"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Profile Picture -->
+        <ImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile"
+            android:contentDescription="Profile Picture"
+            android:background="@drawable/circular_image"
+            android:clipToOutline="true" />
+
+        <!-- Edit Icon -->
+        <ImageView
+            android:id="@+id/ivEditIcon"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="-50dp"
+            android:layout_marginTop="-35dp"
+            android:contentDescription="Edit Icon"
+
+            android:elevation="4dp"
+
+            android:src="@drawable/edit" />
+
+        <!-- Nurse Name -->
+        <TextView
+            android:id="@+id/tvNurseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sarah Johnson"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp" />
+
+        <!-- Specialty -->
+        <TextView
+            android:id="@+id/tvSpecialty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Specialty: Post-Surgery Care"
+            android:textSize="12sp"
+            android:layout_marginTop="1dp" />
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Location: Dhaka, Bangladesh"
+            android:textSize="12sp"
+            android:layout_marginTop="1dp" />
+
+        <!-- Open to Work -->
+        <TextView
+            android:id="@+id/tvOpenToWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Open to Work: Yes"
+            android:textSize="12sp"
+            android:layout_marginTop="1dp" />
+
+        <!-- Monthly Salary -->
+        <TextView
+            android:id="@+id/tvSalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Expected Monthly Salary: $1,500"
+            android:textSize="12sp"
+            android:layout_marginTop="1dp" />
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/dividerBlog"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvBlog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Blogs"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="-25dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerSection"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewBlog"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="16dp"
+         />
+
+    <!-- ScrollView for Blog Section -->
+    <ScrollView
+        android:id="@+id/scrollViewBlog"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBlog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+            <!-- Blog Section -->
+
+            <TextView
+                android:id="@+id/tvBlogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health Tips Blog"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tvBlogContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staying Healthy: Tips for a Balanced Lifestyle\n\n1. Stay hydrated by drinking at least 8 glasses of water daily.\n2. Exercise regularly to maintain physical and mental well-being.\n3. Prioritize sleep and aim for 7-8 hours each night.\n4. Eat a balanced diet rich in fruits, vegetables, and lean protein.\n5. Practice stress management techniques like yoga or meditation.\n6. Avoid smoking and limit alcohol consumption."
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Reviews"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewBlog"
+        app:layout_constraintBottom_toTopOf="@+id/rvPatientDetails"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="16dp"
+        />
+
+    <!-- RecyclerView for Patient Details -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPatientDetails"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="-8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/des_review" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="#FFFFFF"
+        android:paddingBottom="70dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Request Option -->
+        <LinearLayout
+            android:id="@+id/llRequests"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Requests"
+                android:src="@drawable/request" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Requests"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Study Material Option -->
+        <LinearLayout
+            android:id="@+id/llStudyMaterial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/llRequests"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Blogs"
+                android:src="@drawable/blogger" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Study Material"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- History Option -->
+        <LinearLayout
+            android:id="@+id/llHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/llStudyMaterial"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="History"
+                android:src="@drawable/history" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="History"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- My Profile Option -->
+        <LinearLayout
+            android:id="@+id/llProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/llHistory"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="My Profile"
+                android:src="@drawable/profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="My Profile"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
