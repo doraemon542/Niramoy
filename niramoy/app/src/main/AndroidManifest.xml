@@ -13,26 +13,17 @@
         android:theme="@style/Theme.Niramoy"
         tools:targetApi="31">
         <activity
-            android:name=".user.User_Dashboard"
-            android:exported="true"
-            android:label="@string/title_activity_user_dashboard"
-            android:theme="@style/Theme.Niramoy.NoActionBar">
+            android:name=".nurse.Nurse_homepage"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".nurse.Nurse_homepage"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:name=".Nurse_Home_page"
+            android:exported="false" />
     </application>
 
 </manifest>

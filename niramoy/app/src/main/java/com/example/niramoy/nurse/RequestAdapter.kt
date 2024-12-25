@@ -55,8 +55,8 @@ class RequestAdapter(private val requestList: List<Request>) :
         fun setData(request: Request) {
             tvPatientName.text = "Patient Name: ${request.name}"
             tvRequestDetails.text = "Care Needed: ${request.details}"
-            tvRequestDate.text = "Duration: ${request.duration}"
-            tvTimePeriod.text = "Time Period: ${request.period}"
+            tvRequestDate.text = "Service Code No: ${request.duration}"
+            tvTimePeriod.text = "Time Range: ${request.period}"
             tvLocation.text = "Location: ${request.location}"
             tvSalary.text = "Salary: ${request.salary}"
             ivProfilePicture.setImageResource(request.profileImageResId)

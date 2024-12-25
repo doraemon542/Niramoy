@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 
 
 import android.widget.ImageView
+import android.widget.LinearLayout
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,19 +24,30 @@ class Nurse_homepage : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_nurse_homepage)
 
-        val ivProfile = findViewById<ImageView>(R.id.ivProfile)
+        val llProfile: LinearLayout = findViewById(R.id.llProfile)
+
+        // Set an OnClickListener
+        llProfile.setOnClickListener {
+            // Navigate to the ProfileActivity
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
 
 
 
 
         // Sample hardcoded data
         val requestList = listOf(
-            Request("John Doe", "Post-surgery care", "1 Month","From 7am to 7pm", "Dhaka, Bangladesh", "20000tk Monthly", R.drawable.pro),
-            Request("Jane Smith", "Elderly care", "5 Month", "From 9am to 7pm","Chittagong, Bangladesh", "15000tk Monthly", R.drawable.profile),
-            Request("Alice Brown", "Infant care", "3 Month", "From 7am to 7pm","Sylhet, Bangladesh", "25000tk Monthly", R.drawable.pro),
-            Request("Janegadhama Smith", "Elderly care", "6 Month", "From 9am to 5pm","Khulna, Bangladesh", "15000tk Monthly", R.drawable.profile),
-            Request("Johnsagolie Doe", "Post-surgery care", "3 Month", "From 9am to 7pm","Barishal, Bangladesh", "25000tk Monthly", R.drawable.pro),
-            Request("Jane Gonje", "Elderly care", "7 Month", "From 9pm to 7am","Rajshahi, Bangladesh", "30000tk Monthly", R.drawable.profile)
+            Request("John Doe", "Post-surgery care", "10005","From 7am to 7pm", "Dhaka, Bangladesh", "20000tk Monthly", R.drawable.pro),
+            Request("Jane Smith", "Elderly care", "10006", "From 9am to 7pm","Chittagong, Bangladesh", "15000tk Monthly", R.drawable.profile),
+            Request("Alice Brown", "Infant care", "10007", "From 7am to 7pm","Sylhet, Bangladesh", "25000tk Monthly", R.drawable.pro),
+            Request("Janegadhama Smith", "Elderly care", "10008", "From 9am to 5pm","Khulna, Bangladesh", "15000tk Monthly", R.drawable.profile),
+            Request("Johnsagolie Doe", "Post-surgery care", "10009", "From 9am to 7pm","Barishal, Bangladesh", "25000tk Monthly", R.drawable.pro),
+            Request("Jane Gonje", "Elderly care", "10010", "From 9pm to 7am","Rajshahi, Bangladesh", "30000tk Monthly", R.drawable.profile)
         )
 
 
