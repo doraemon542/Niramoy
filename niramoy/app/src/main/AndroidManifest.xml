@@ -21,6 +21,7 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
+
         <activity android:name=".user.User_Dashboard"
             android:exported="true">
             <intent-filter>
@@ -29,6 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".nurse.Nurse_blog"
+            android:exported="false" />
+        <activity
+            android:name=".nurse.ProfileActivity"
+            android:exported="false"/>
 <!--        <activity-->
 <!--            android:name=".nurse.Nurse_homepage"-->
 <!--            android:exported="false" />-->

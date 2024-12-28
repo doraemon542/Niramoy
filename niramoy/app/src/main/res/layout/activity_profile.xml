@@ -12,34 +12,36 @@
     <LinearLayout
         android:id="@+id/headerSection"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="192dp"
         android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Profile Picture -->
+
+        <!-- Edit Icon -->
+
         <ImageView
             android:id="@+id/ivProfilePicture"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile"
-            android:contentDescription="Profile Picture"
-            android:background="@drawable/circular_image"
-            android:clipToOutline="true" />
 
-        <!-- Edit Icon -->
+            android:background="@drawable/circular_image"
+            android:clipToOutline="true"
+            android:contentDescription="Profile Picture"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+
         <ImageView
             android:id="@+id/ivEditIcon"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="-50dp"
             android:layout_marginTop="-35dp"
+            android:layout_marginEnd="-50dp"
             android:contentDescription="Edit Icon"
 
             android:elevation="4dp"
@@ -52,10 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Sarah Johnson"
+            android:layout_marginTop="6dp"
+            android:text="Sarah Johnson(BSN)"
             android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginTop="6dp" />
+            android:textStyle="bold" />
 
         <!-- Specialty -->
         <TextView
@@ -63,9 +65,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="1dp"
             android:text="Specialty: Post-Surgery Care"
-            android:textSize="12sp"
-            android:layout_marginTop="1dp" />
+            android:textSize="12sp" />
 
         <!-- Location -->
         <TextView
@@ -73,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="1dp"
             android:text="Location: Dhaka, Bangladesh"
-            android:textSize="12sp"
-            android:layout_marginTop="1dp" />
+            android:textSize="12sp" />
 
         <!-- Open to Work -->
         <TextView
@@ -83,9 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="1dp"
             android:text="Open to Work: Yes"
-            android:textSize="12sp"
-            android:layout_marginTop="1dp" />
+            android:textSize="12sp" />
 
         <!-- Monthly Salary -->
         <TextView
@@ -93,104 +95,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Expected Monthly Salary: $1,500"
-            android:textSize="12sp"
-            android:layout_marginTop="1dp" />
+            android:layout_marginTop="1dp"
+            android:text="Expected Monthly Salary: 2,500tk"
+            android:textSize="12sp" />
 
         <!-- Divider -->
         <View
             android:id="@+id/dividerBlog"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#CCCCCC"
-            android:layout_marginTop="2dp" />
+            android:layout_marginTop="4dp"
+            android:background="#CCCCCC" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvBlog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Blogs"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="-25dp"
-        app:layout_constraintTop_toBottomOf="@+id/headerSection"
-        app:layout_constraintBottom_toTopOf="@+id/scrollViewBlog"
-        app:layout_constraintStart_toStartOf="parent"
-        android:paddingLeft="16dp"
-         />
 
-    <!-- ScrollView for Blog Section -->
-    <ScrollView
-        android:id="@+id/scrollViewBlog"
+    <!-- Tab Layout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tvBlog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp">
-
-            <!-- Blog Section -->
-
-            <TextView
-                android:id="@+id/tvBlogTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Health Tips Blog"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/tvBlogContent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Staying Healthy: Tips for a Balanced Lifestyle\n\n1. Stay hydrated by drinking at least 8 glasses of water daily.\n2. Exercise regularly to maintain physical and mental well-being.\n3. Prioritize sleep and aim for 7-8 hours each night.\n4. Eat a balanced diet rich in fruits, vegetables, and lean protein.\n5. Practice stress management techniques like yoga or meditation.\n6. Avoid smoking and limit alcohol consumption."
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"
-                android:lineSpacingExtra="4dp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <TextView
-        android:id="@+id/tvreview"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patient Reviews"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@+id/scrollViewBlog"
-        app:layout_constraintBottom_toTopOf="@+id/rvPatientDetails"
-        app:layout_constraintStart_toStartOf="parent"
-        android:paddingLeft="16dp"
-        />
 
-    <!-- RecyclerView for Patient Details -->
+        app:layout_constraintTop_toBottomOf="@id/headerSection"
+        app:tabIndicatorColor="@color/purple_700"
+        app:tabSelectedTextColor="@color/purple_500"
+        app:tabTextColor="#424245"
+        app:tabMode="scrollable"
+        app:tabGravity="fill" />
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPatientDetails"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="-8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvreview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/des_review" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="60dp"
         android:background="#FFFFFF"
-        android:paddingBottom="70dp"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -248,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Study Material"
+                android:text="Blogs"
                 android:textSize="12sp" />
         </LinearLayout>
 

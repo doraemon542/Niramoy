@@ -33,6 +33,20 @@ class Nurse_homepage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val llBlog: LinearLayout = findViewById(R.id.llStudyMaterial)
+
+        // Set an OnClickListener
+        llBlog.setOnClickListener {
+            // Navigate to the ProfileActivity
+            val intent = Intent(this, Nurse_blog::class.java)
+            startActivity(intent)
+        }
+        val llRequests: LinearLayout = findViewById(R.id.llRequests)
+
+
+
+
+
 
 
 
