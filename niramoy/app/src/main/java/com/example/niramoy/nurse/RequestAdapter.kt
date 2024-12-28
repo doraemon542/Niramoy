@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.niramoy.R
 
 
-data class Request(
-    val name: String,
-    val details: String,
-    val duration: String,
-    val period: String,
-    val location: String,
-    val salary: String,
-    val profileImageResId: Int
-)
+//data class Request(
+//    val name: String,
+//    val details: String,
+//    val duration: String,
+//    val period: String,
+//    val location: String,
+//    val salary: String,
+//    val profileImageResId: Int
+//)
 
 
 class RequestAdapter(private val requestList: List<Request>) :

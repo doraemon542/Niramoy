@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.niramoy.R
 
 
-data class PatientDetails(
-    val details: String,
-
-    val date: String,
-    val location: String,
-
-    val review: String
-)
+//data class PatientDetails(
+//    val details: String,
+//
+//    val date: String,
+//    val location: String,
+//
+//    val review: String
+//)
 
 class PatientDetailsAdapter(private val requestList: List<PatientDetails>) :
     RecyclerView.Adapter<PatientDetailsAdapter.RequestViewHolder>() {
