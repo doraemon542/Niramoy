@@ -7,14 +7,21 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-//import com.codingformobile.registrationuser.R
 import com.example.niramoy.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
-class RegistrationActivity: AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private val database = FirebaseDatabase.getInstance()
+    private val usersRef = database.getReference("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+        auth = FirebaseAuth.getInstance()
 
         val editTextName = findViewById<EditText>(R.id.editTextName)
         val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
@@ -22,16 +29,19 @@ class RegistrationActivity: AppCompatActivity() {
         val editTextNationalIdPassport = findViewById<EditText>(R.id.editTextNationalIdPassport)
         val checkBoxAgree = findViewById<CheckBox>(R.id.checkBoxAgree)
         val buttonRegister = findViewById<Button>(R.id.buttonRegister)
-        val buttonnurse = findViewById<Button>(R.id.buttonnurse)
-        val buttonlogin = findViewById<Button>(R.id.buttonlogin)
-        buttonnurse.setOnClickListener {
+        val buttonNurse = findViewById<Button>(R.id.buttonnurse)
+        val buttonLogin = findViewById<Button>(R.id.buttonlogin)
+
+        buttonNurse.setOnClickListener {
             val intent = Intent(this, NurseRegistrationActivity::class.java)
             startActivity(intent)
         }
-        buttonlogin.setOnClickListener {
+
+        buttonLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
         buttonRegister.setOnClickListener {
             val name = editTextName.text.toString().trim()
             val email = editTextEmail.text.toString().trim()
@@ -44,9 +54,46 @@ class RegistrationActivity: AppCompatActivity() {
             } else if (!isAgree) {
                 Toast.makeText(this, "You must agree to the terms and conditions", Toast.LENGTH_SHORT).show()
             } else {
-                // You can add further registration logic here (e.g., save to database, authenticate, etc.)
-                Toast.makeText(this, "Registered Successfully!", Toast.LENGTH_SHORT).show()
+                // Register user in Firebase
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Save additional user data to the database
+                            val userId = auth.currentUser?.uid
+                            val user = User(
+                                userId = userId ?: "",
+                                name = name,
+                                email = email,
+                                nationalIdPassport = nationalIdPassport,
+                                role = "patient" // Default role for general users
+                            )
+
+                            userId?.let {
+                                usersRef.child(it).setValue(user).addOnCompleteListener { dbTask ->
+                                    if (dbTask.isSuccessful) {
+                                        Toast.makeText(this, "Registered Successfully!", Toast.LENGTH_SHORT).show()
+                                        // Redirect to login or another activity
+                                        startActivity(Intent(this, LoginActivity::class.java))
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "Database Error: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
+                        } else {
+                            Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
     }
 }
+
+// Data class to store user information
+data class User(
+    val userId: String = "",
+    val name: String = "",
+    val email: String = "",
+    val nationalIdPassport: String = "",
+    val role: String = "patient" // Role can be "patient", "nurse", etc.
+)

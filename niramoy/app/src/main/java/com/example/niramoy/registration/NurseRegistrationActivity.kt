@@ -6,14 +6,21 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-//import com.codingformobile.registrationuser.R
 import com.example.niramoy.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class NurseRegistrationActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private val database = FirebaseDatabase.getInstance()
+    private val nursesRef = database.getReference("nurses")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nurse_registration)
+
+        auth = FirebaseAuth.getInstance()
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
         val etName: EditText = findViewById(R.id.etName)
@@ -38,7 +45,34 @@ class NurseRegistrationActivity : AppCompatActivity() {
             } else if (!termsAccepted) {
                 showToast("Please accept the terms and conditions.")
             } else {
-                showToast("Registration Successful!")
+                // Register nurse in Firebase
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Save nurse data
+                            val nurseId = auth.currentUser?.uid
+                            val nurse = User(
+                                userId = nurseId ?: "",
+                                name = name,
+                                email = email,
+                                nationalIdPassport = nid,
+                                role = "nurse" // Role for nurses
+                            )
+
+                            nurseId?.let {
+                                nursesRef.child(it).setValue(nurse).addOnCompleteListener { dbTask ->
+                                    if (dbTask.isSuccessful) {
+                                        showToast("Nurse Registered Successfully!")
+                                        finish()
+                                    } else {
+                                        showToast("Database Error: ${dbTask.exception?.message}")
+                                    }
+                                }
+                            }
+                        } else {
+                            showToast("Registration Failed: ${task.exception?.message}")
+                        }
+                    }
             }
         }
     }

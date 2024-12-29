@@ -63,39 +63,55 @@
         android:padding="12dp" />
 
     <!-- Forgot Password -->
+
+    <!-- Login Button -->
+
+    <!-- Register Now -->
+
     <TextView
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Forgot your Password?"
         android:textColor="#6a0dad"
-        android:textSize="14sp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_below="@+id/etPassword"
-        android:layout_marginTop="8dp" />
+        android:textSize="14sp" />
 
-    <!-- Login Button -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#6a0dad"
-        android:layout_marginHorizontal="16dp"
         android:layout_below="@+id/tvForgotPassword"
-        android:layout_marginTop="16dp" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="29dp"
+        android:backgroundTint="#6a0dad"
+        android:text="Login"
+        android:textColor="#FFFFFF" />
 
-    <!-- Register Now -->
     <TextView
         android:id="@+id/tvRegisterNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="93dp"
         android:text="Don't have an account? Register Now"
         android:textColor="#6a0dad"
-        android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:textSize="14sp" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="253dp"
+        android:layout_marginBottom="269dp"
+        android:text="Login as Nurse" />
 </RelativeLayout>
