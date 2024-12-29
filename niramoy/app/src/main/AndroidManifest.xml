@@ -12,33 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Niramoy"
         tools:targetApi="31">
-        <activity
-            android:name=".nurse.Nurse_homepage"
-            android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+        <activity
+            android:name="com.example.niramoy.nurse.Nurse_homepage"
+            android:exported="false">
         </activity>
 
-        <activity android:name=".user.User_Dashboard"
+        <activity android:name="com.example.niramoy.user.User_Dashboard"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name="com.example.niramoy.nurse.Nurse_blog"
+            android:exported="false" />
+        <activity
+            android:name="com.example.niramoy.nurse.ProfileActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.example.niramoy.registration.RegistrationActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.example.niramoy.registration.NurseRegistrationActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.example.niramoy.registration.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity
-            android:name=".nurse.Nurse_blog"
-            android:exported="false" />
-        <activity
-            android:name=".nurse.ProfileActivity"
-            android:exported="false"/>
-
     </application>
 
 </manifest>
