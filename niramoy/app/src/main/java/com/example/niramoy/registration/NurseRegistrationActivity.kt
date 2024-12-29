@@ -6,7 +6,8 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.codingformobile.registrationuser.R
+//import com.codingformobile.registrationuser.R
+import com.example.niramoy.R
 
 class NurseRegistrationActivity : AppCompatActivity() {
 

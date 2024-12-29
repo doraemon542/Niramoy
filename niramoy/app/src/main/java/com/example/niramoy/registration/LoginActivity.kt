@@ -7,7 +7,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.codingformobile.registrationuser.R
+import com.example.niramoy.R
+import com.example.niramoy.admin.AdminPage
+
+import com.example.niramoy.nurse.Nurse_homepage
+import com.example.niramoy.user.User_Dashboard
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -29,10 +34,10 @@ class LoginActivity : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
-                if (isValidCredentials(email, password)) {
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    // Navigate to Home Screen or Dashboard
-
+                val role = authenticateUser(email, password)
+                if (role != null) {
+                    Toast.makeText(this, "Login Successful as $role", Toast.LENGTH_SHORT).show()
+                    navigateToRoleBasedDashboard(role)
                 } else {
                     Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show()
                 }
@@ -53,15 +58,32 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun isValidCredentials(email: String, password: String): Boolean {
-        // Implement actual authentication logic here
-        // For example, using Firebase Authentication or an API call
-        return authenticateUser(email, password)
+    private fun authenticateUser(email: String, password: String): String? {
+        // Replace this with real authentication logic (e.g., API call, Firebase)
+        // Example hardcoded users for demonstration
+        return when {
+            email == "admin@example.com" && password == "admin123" -> "admin"
+            email == "nurse@example.com" && password == "nurse123" -> "nurse"
+            email == "user@example.com" && password == "user123" -> "user"
+            else -> null
+        }
     }
 
-    private fun authenticateUser(email: String, password: String): Boolean {
-        // Placeholder for actual authentication logic
-        // Return true if authentication is successful, false otherwise
-        return false
+    private fun navigateToRoleBasedDashboard(role: String) {
+        when (role) {
+            "admin" -> {
+                val intent = Intent(this, AdminPage::class.java)
+                startActivity(intent)
+            }
+            "nurse" -> {
+                val intent = Intent(this, Nurse_homepage::class.java)
+                startActivity(intent)
+            }
+            "user" -> {
+                val intent = Intent(this, User_Dashboard::class.java)
+                startActivity(intent)
+            }
+        }
+        finish() // Close the login activity
     }
 }

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.niramoy.R
+import com.example.niramoy.registration.LoginActivity
 import com.google.android.material.tabs.TabLayout
 
 class ProfileActivity : AppCompatActivity() {
@@ -48,9 +49,15 @@ class ProfileActivity : AppCompatActivity() {
 
 
 
-
+        val llLogout: LinearLayout = findViewById(R.id.llHistory)
 
         val llBlog: LinearLayout = findViewById(R.id.llStudyMaterial)
+
+        llLogout.setOnClickListener {
+            logoutUser()
+        }
+
+
 
         // Set an OnClickListener
         llBlog.setOnClickListener {
@@ -97,6 +104,15 @@ class ProfileActivity : AppCompatActivity() {
         })
 
         ivEditIcon.setOnClickListener { openImagePicker() }
+    }
+
+
+    private fun logoutUser() {
+        // Clear session data if needed (e.g., SharedPreferences, etc.)
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish() // Close the current activity
     }
 
     private fun openImagePicker() {
